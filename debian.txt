@@ -1,0 +1,52 @@
+Network:
+
+nano /etc/network/interfaces
+
+auto -> static
+
+address <IP cím>
+netmask <mask>
+gateway <cím>
+
+nano /etc/resolv.conf
+domain ceg.local
+nameserver 4.4.4.4
+nameserver 8.8.8.8
+
+DHCP:
+
+apt-get install isc-dhcp-server
+nano /etc/dhcp/dhcpd.conf
+subnet <IP cím> netmask <mask>
+range <IP cím> - <IP cím>
+option domain-name "ceg.loacl";
+option routers <IP cím>;
+option broadcast-address <IP cím.255>;
+default-lease-time <xy>;
+max-lease-time <xy>;
+authoritative
+
+HTML:
+
+nano /var/www/html/index.html
+IT works! -> név
+
+MEGO.MAPPA:
+
+apt-get install samba
+nano /etc/samba/smb.conf
+
+comment=megosztás
+path= /home/debian/megosztás
+
+TUZFAL:
+
+nano /etc/nftables.conf
+
+chain input {
+	type filter hook input priority 0; policy drop
+	iif to accept
+	ip address <IP cím> ip protocol icmp drop
+	tcp dport ssh accept
+	tcp dport {80,443} 
+	udp dport 53 accept

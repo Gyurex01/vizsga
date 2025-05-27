@@ -1,0 +1,6 @@
+interface range fa0/1 - fa0/4
+shutdown
+channel-group 2 mode active
+no shutdown
+interface port-channel 2
+switchport mode trunk

@@ -1,0 +1,15 @@
+conf t
+line con 0
+password zipi123
+login
+end
+banner motd ! Hello !
+enable secret zipi123
+enable password zipi12345
+exit
+line vty 0 15
+password zipi123
+login
+end
+service password-encryption
+
