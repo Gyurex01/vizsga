@@ -60,6 +60,9 @@ iptables -A INPUT -p icmp --icmp-type echo-request -d 127.0.0.1 -j DROP
 # SSH engedélyezés (port 22)
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 
+# FTP engedélyezés (port 21)
+iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+
 # Webszerver engedélyezés (port 80)
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
